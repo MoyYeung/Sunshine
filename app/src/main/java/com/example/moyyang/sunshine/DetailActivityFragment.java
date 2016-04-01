@@ -155,7 +155,7 @@ public class DetailActivityFragment extends Fragment implements LoaderManager.Lo
        if(null != data && data.moveToFirst()) {
            int weatherID = data.getInt(COL_WEATHER_CONDITION_ID);
 
-           mIconView.setImageResource(R.drawable.ic_launcher);
+           mIconView.setImageResource(Utility.getIconResourceForWeatherCondition(weatherID));
 
            Long date = data.getLong(COL_WEATHER_DATE);
 
@@ -175,7 +175,7 @@ public class DetailActivityFragment extends Fragment implements LoaderManager.Lo
            String low = Utility.formatTemperature(getActivity(), data.getDouble(COL_WEATHER_MIN_TEMP), isMetric);
            mLowTempView.setText(low);
 
-           float humidity = data.getFloat(COL_WEATHER_HUMIDITY);
+           float humidity = data.getFloat(COL_WEATHER_HUMIDITY);  //? why 0?
            mHumidityView.setText(getString(R.string.format_humidity,humidity));
 
            float windSpeedStr =data.getFloat(COL_WEATHER_WIND_SPEED);
